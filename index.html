@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- <script src="script.js"></script>  Dışardan dosya almak istediğimizde  --> 
+        <title>Temel Javascript</title>
+
+        <style>
+            .header {
+                text-align: center;
+                font-family: sans-serif;
+                font-size: 18px;
+                background: red;
+            }
+
+            .container {
+                text-align: center;
+                font-size: 30px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="header">
+
+            <h1>Temel Javascript</h1>
+
+        </div>
+
+        <hr>
+        <div class="container">
+        <p id="para1">Paragraf 1</p>
+        <button onclick="renkDegistir()">Renk Değiştir</button>
+        <button onmouseover = "mouseover()" onmouseout="mouseout()">On Mouse Over/Out</button>
+        <button onclick="tikla()">Tıkla</button>
+        <!-- Butona tıklandıktan sonra içeriğinin değişmesi -->
+        <button onclick="this.innerHTML = 'Butona Tıklandı'">Tıkla</button>
+        <button onclick="tikla1(this)">Tıkla</button>
+
+        <!-- Form gönderme -->
+        <form name="form1" action="gonder.php" method="POST" onsubmit = "return dogrula()">
+            <input type="text" name = "isim"/>
+            <button type="submit">Gönder</button>
+        </form>
+        </div>
+
+        <script>
+            // alert("Selin");
+            
+        // Integer Tanımlama
+           /* var sayi1= 20;
+            var sayi2= 30;
+            var sayi3= 40;
+            alert("toplamları: " + (sayi1+sayi2+sayi3)); */
+
+
+        // String Tanımlama
+           /* var a= "Javascript";
+            var b= "Programlama";
+            var c;
+            c= "Dili";
+            alert(a+b+c); */
+
+
+        // Arrayler
+            /* var array= ["Javascript", "Java", "Python"];
+            alert(array[0]);
+            alert(array[1]);
+            alert(array[2]);
+            array[3] = "PHP";
+            alert(array[3]);
+            array.push("Go");
+            array.splice(1,2) */
+
+
+        // Döngüler
+            /*for(var i=0; i<10; i++){
+                console.log("i değeri: " +i);
+            }
+            
+            var i=0;
+
+            while(i<100){
+                console.log("i değeri: " + i);
+                i+=2;
+            }*/
+
+
+           /* var sayilar= [32,5,1,100,-1,90];
+            for(var i=0; i<sayilar.length; i++){
+                console.log(sayilar[i]);
+            }
+
+            sayilar.forEach(function(sayi){
+                console.log("eleman: "+ sayi);              
+            });*/
+
+
+            // Koşullar
+          /*  var a=5;
+            var b=6;
+
+            if(a==b){
+                console.log("Eşit");
+            }
+
+            if(2 === "2"){ // === veri tipi ve değer karşılaştırması
+    
+            }
+
+            if( 2 == 2 && "Murat" == "Murat"){
+                console.log("Eşit..");
+            }
+
+            if( 2 == 2 || "Murat" == "Murat"){
+                console.log("Eşit..");
+            }
+
+            if( ! (3 < 4) ){
+            }
+
+            if(a==b){
+                console.log("Evet..");
+            }
+            else if(a < b){
+                console.log("Küçük..");
+            }
+            else if( a > b){
+                console.log("Büyük..");
+            }
+            else{
+                console.log("Hayır..");
+            }
+
+
+            var islem= 3;
+            switch(islem){
+                case 1:
+                    console.log("işlem 1..");
+                    break;
+                
+                case 2:
+                    console.log("işlem 2..");
+                    break;
+
+                default:
+                    console.log("geçersiz işlem..");
+            }*/
+
+
+        //Fonksiyonlar
+
+        /*   function selamla(){
+               console.log("Merhaba..");
+           }
+           selamla();
+
+           function selam(isim){
+               console.log("Merhaba " +isim);
+           }
+           selam("Selin");
+
+           function toplama(a,b,c){
+               return a+b+c;
+           }
+           var toplam= toplama(3,4,5);
+           console.log("Toplam : "+ toplam);
+
+        //Object
+
+           var calisan= {
+               isim: "Selin",
+               soyisim: "Aslantas",
+               numara: 123456,
+               diller: ["Php","Java","C++"],
+               adres: {
+                   cadde: "Kabil",
+                   sokak: "1254. Sk."
+               },
+               isimBilgileri: function(){
+                   return "Çalışan ismi: "+ this.isim+ " Çalışan Soyisim: "+ this.soyisim;
+               }
+           }
+
+           console.log(calisan.isim);
+           console.log(calisan.numara);
+           console.log(calisan.diller);
+           console.log(calisan.adres.cadde);
+           console.log(calisan.isimBilgileri());
+
+
+           var calisan1 = new Object();
+           calisan1.isim1= "Selin";
+           calisan1.soyisim1= "Aslantas";
+           calisan1.isimBilgileri1= function(){
+               return "isim bilgileri " + this.isim1;
+           };
+
+           console.log(calisan1.isim1);
+           console.log(calisan1.isimBilgileri1());
+
+
+           function Calisan2(isim,soyisim,numara){
+               this.isim= isim;
+               this.soyisim= soyisim;
+               this.numara=numara;
+               this.bilgileriGoster= function(){
+                   return "İsim: " + this.isim+ "\nsoyisim: "+ this.soyisim + "\nnumara: "+this.numara;
+               }
+           }
+
+           var calisan3= new Calisan2("Selin", "Aslantas", 123456);
+           console.log(calisan3.bilgileriGoster());*/
+        
+
+        //ButonEvent
+          function tikla(){
+              alert("Butona tıklandı")
+          }
+
+          function tikla1(element){
+              element.innerHTML= "Butona Tıklandı";
+
+          }
+
+          function renkDegistir(){
+              var element = document.getElementById("para1");
+              element.style.color= "red";
+          }
+
+          function mouseover(){
+              var element = document.getElementById("para1");
+              element.innerHTML = "Mouse Over Efecti";
+          }
+
+          function mouseout(){
+              var element = document.getElementById("para1");
+              element.innerHTML = "Mouse Out Effecti";
+          }
+
+
+        //Form kontrol
+
+           function dogrula(){
+               var form = document.forms["form1"];
+               var deger= form["isim"].value;
+
+               if(deger == ""){
+                   alert("isim alanı boş bırakılamaz");
+                   return false;
+               }
+               return true;
+           }
+
+
+        </script>
+    </body>
+</html>
